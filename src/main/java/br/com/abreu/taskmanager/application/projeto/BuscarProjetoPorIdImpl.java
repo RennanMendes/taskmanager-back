@@ -4,16 +4,17 @@ import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
 import br.com.abreu.taskmanager.application.exception.ProjetoNaoEncontradoException;
 import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorId;
 import br.com.abreu.taskmanager.core.entities.Projeto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class BuscarProjetoPorIdImpl implements BuscarProjetoPorId {
 
     private ProjetoRepositoryService repository;
+
+    public BuscarProjetoPorIdImpl(ProjetoRepositoryService repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Projeto buscar(UUID id) {
