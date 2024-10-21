@@ -3,17 +3,19 @@ package br.com.abreu.taskmanager.application.projeto;
 import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
 import br.com.abreu.taskmanager.core.cases.projeto.ExcluirProjeto;
 import br.com.abreu.taskmanager.core.entities.Projeto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ExcluirProjetoImpl implements ExcluirProjeto {
 
     private ProjetoRepositoryService repository;
     private BuscarProjetoPorIdImpl buscarProjetoPorId;
+
+    public ExcluirProjetoImpl(ProjetoRepositoryService repository, BuscarProjetoPorIdImpl buscarProjetoPorId) {
+        this.repository = repository;
+        this.buscarProjetoPorId = buscarProjetoPorId;
+    }
 
     @Override
     public void excluir(UUID id) {
@@ -21,4 +23,3 @@ public class ExcluirProjetoImpl implements ExcluirProjeto {
         repository.deletar(projeto);
     }
 }
-// TODO -> Criar arquivo de configuração e testar projeto
