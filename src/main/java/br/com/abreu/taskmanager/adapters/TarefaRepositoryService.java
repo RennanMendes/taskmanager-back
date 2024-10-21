@@ -1,5 +1,6 @@
 package br.com.abreu.taskmanager.adapters;
 
+import br.com.abreu.taskmanager.core.entities.Status;
 import br.com.abreu.taskmanager.core.entities.Tarefa;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface TarefaRepositoryService {
 
     Tarefa save(Tarefa tarefa);
 
-    void deletar(UUID id);
+    void deletar(Tarefa tarefa);
 
-    List<Tarefa> filtarPorIdEStatus(UUID id, String status);
+    List<Tarefa> filtarPorIdEStatus(UUID id, Status status);
 }

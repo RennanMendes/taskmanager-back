@@ -6,7 +6,7 @@ import br.com.abreu.taskmanager.core.entities.Projeto;
 
 public class CriarProjetoImpl implements CriarProjeto {
 
-    private ProjetoRepositoryService repository;
+    private final ProjetoRepositoryService repository;
 
     public CriarProjetoImpl(ProjetoRepositoryService repository) {
         this.repository = repository;

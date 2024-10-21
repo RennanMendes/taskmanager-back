@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class BuscarTarefasPorProjetoImpl implements BuscarTarefasPorProjeto {
 
-    private TarefaRepositoryService repository;
+    private final TarefaRepositoryService repository;
 
     public BuscarTarefasPorProjetoImpl(TarefaRepositoryService repository) {
         this.repository = repository;

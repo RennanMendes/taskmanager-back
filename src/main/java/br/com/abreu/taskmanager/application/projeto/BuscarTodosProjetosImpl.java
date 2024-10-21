@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BuscarTodosProjetosImpl implements BuscarTodosProjetos {
 
-    private ProjetoRepositoryService repository;
+    private final ProjetoRepositoryService repository;
 
     public BuscarTodosProjetosImpl(ProjetoRepositoryService repository) {
         this.repository = repository;

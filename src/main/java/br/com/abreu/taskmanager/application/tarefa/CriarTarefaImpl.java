@@ -6,7 +6,7 @@ import br.com.abreu.taskmanager.core.entities.Tarefa;
 
 public class CriarTarefaImpl implements CriarTarefa {
 
-    private TarefaRepositoryService repository;
+    private final TarefaRepositoryService repository;
 
     public CriarTarefaImpl(TarefaRepositoryService repository) {
         this.repository = repository;

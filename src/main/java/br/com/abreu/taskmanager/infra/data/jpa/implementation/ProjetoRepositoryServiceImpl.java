@@ -5,8 +5,6 @@ import br.com.abreu.taskmanager.core.entities.Projeto;
 import br.com.abreu.taskmanager.infra.data.jpa.converters.ProjetoRepositoryConverter;
 import br.com.abreu.taskmanager.infra.data.jpa.entity.ProjetoEntity;
 import br.com.abreu.taskmanager.infra.data.jpa.repository.ProjetoRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +13,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProjetoRepositoryServiceImpl implements ProjetoRepositoryService {
 
-    @Autowired
-    private ProjetoRepository repository;
+    private final ProjetoRepository repository;
+    private final ProjetoRepositoryConverter converter;
 
     @Autowired
-    private ProjetoRepositoryConverter converter;
+    public ProjetoRepositoryServiceImpl(ProjetoRepository repository, ProjetoRepositoryConverter converter) {
+        this.repository = repository;
+        this.converter = converter;
+    }
 
     @Override
     public Optional<Projeto> buscarPorId(UUID id) {

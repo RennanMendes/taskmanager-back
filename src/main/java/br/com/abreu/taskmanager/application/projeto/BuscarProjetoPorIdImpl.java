@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class BuscarProjetoPorIdImpl implements BuscarProjetoPorId {
 
-    private ProjetoRepositoryService repository;
+    private final ProjetoRepositoryService repository;
 
     public BuscarProjetoPorIdImpl(ProjetoRepositoryService repository) {
         this.repository = repository;

@@ -9,8 +9,8 @@ import java.util.UUID;
 
 public class ExcluirProjetoImpl implements ExcluirProjeto {
 
-    private ProjetoRepositoryService repository;
-    private BuscarProjetoPorIdImpl buscarProjetoPorId;
+    private final ProjetoRepositoryService repository;
+    private final BuscarProjetoPorIdImpl buscarProjetoPorId;
 
     public ExcluirProjetoImpl(ProjetoRepositoryService repository, BuscarProjetoPorIdImpl buscarProjetoPorId) {
         this.repository = repository;
