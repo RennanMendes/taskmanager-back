@@ -1,0 +1,58 @@
+type Query {
+    buscarPorId(id: ID!) : ProjetoOut
+    buscarPorNome(nome: String) : [ProjetoOut]
+    buscarTodos: [ProjetoOut]
+}
+
+type Mutation{
+    criar(projeto: Projeto!) : ProjetoOut
+    excluir(id: ID!) : Boolean
+}
+
+type ProjetoOut {
+    id: ID
+    nome: String!
+    descricao: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+    responsavel: String!
+    tarefas: [Tarefa]
+}
+
+type Tarefa {
+    id: ID
+    titulo: String!
+    descricao: String
+    prazo: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+    projeto: String!
+}
+
+input Projeto {
+    nome: String!
+    descricao: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+    responsavel: String!
+}
+
+enum Status {
+    PLANEJAMENTO
+    EXECUCAO
+    IMPEDIMENTO
+    FINALIZADO
+    CANCELADO
+}
+
+enum Prioridade {
+    BAIXA
+    MEDIA
+    ALTA
+}
