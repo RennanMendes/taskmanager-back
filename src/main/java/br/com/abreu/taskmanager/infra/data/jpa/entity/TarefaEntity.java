@@ -2,7 +2,6 @@ package br.com.abreu.taskmanager.infra.data.jpa.entity;
 
 import br.com.abreu.taskmanager.core.entities.Prioridade;
 import br.com.abreu.taskmanager.core.entities.Status;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

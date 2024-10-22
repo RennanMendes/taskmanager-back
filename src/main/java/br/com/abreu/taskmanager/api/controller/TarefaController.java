@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Controller
 public class TarefaController {
-    
+
     private final BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase;
     private final BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase;
     private final CriarTarefaUseCase criarTarefaUseCase;
@@ -23,7 +23,8 @@ public class TarefaController {
 
     @Autowired
     public TarefaController(BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase, BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase,
-                            CriarTarefaUseCase criarTarefaUseCase, ExcluirTarefaUseCase excluirTarefaUseCase, FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase) {
+                            CriarTarefaUseCase criarTarefaUseCase, ExcluirTarefaUseCase excluirTarefaUseCase,
+                            FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase) {
         this.buscarTarefaPorIdUseCase = buscarTarefaPorIdUseCase;
         this.buscarTarefasPorProjetoUseCase = buscarTarefasPorProjetoUseCase;
         this.criarTarefaUseCase = criarTarefaUseCase;
@@ -32,22 +33,22 @@ public class TarefaController {
     }
 
     @QueryMapping
-    public Tarefa buscarTarefaPorId(@Argument UUID id){
+    public Tarefa buscarTarefaPorId(@Argument UUID id) {
         return buscarTarefaPorIdUseCase.buscarPorId(id);
     }
 
     @QueryMapping
-    public List<Tarefa> buscarTarefasPorProjetoId(@Argument UUID idProjeto){
+    public List<Tarefa> buscarTarefasPorProjetoId(@Argument UUID idProjeto) {
         return buscarTarefasPorProjetoUseCase.buscarPorProjeto(idProjeto);
     }
 
     @QueryMapping
-    public List<Tarefa> filtarTarefaPorProjetoIdEStatus(UUID idProjeto, Status status){
+    public List<Tarefa> filtarTarefaPorProjetoIdEStatus(@Argument UUID idProjeto, @Argument Status status) {
         return filtarTarefaPorStatusUseCase.filtrarPorIdEStatus(idProjeto, status);
     }
 
     @MutationMapping
-    public Tarefa criarTarefa(@Argument UUID idProjeto, @Argument Tarefa tarefa){
+    public Tarefa criarTarefa(@Argument UUID idProjeto, @Argument Tarefa tarefa) {
         return criarTarefaUseCase.criar(idProjeto, tarefa);
     }
 

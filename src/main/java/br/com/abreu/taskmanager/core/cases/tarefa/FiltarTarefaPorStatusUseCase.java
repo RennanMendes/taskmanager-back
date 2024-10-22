@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface FiltarTarefaPorStatusUseCase {
-    List<Tarefa> filtrarPorIdEStatus(UUID id, Status status);
+    List<Tarefa> filtrarPorIdEStatus(UUID idProjeto, Status status);
 }

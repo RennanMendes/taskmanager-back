@@ -17,7 +17,7 @@ public class FiltarTarefaPorStatusUseCaseImpl implements FiltarTarefaPorStatusUs
     }
 
     @Override
-    public List<Tarefa> filtrarPorIdEStatus(UUID id, Status status) {
-        return repository.filtarPorIdEStatus(id, status);
+    public List<Tarefa> filtrarPorIdEStatus(UUID idProjeto, Status status) {
+        return repository.filtarPorIdEStatus(idProjeto, status);
     }
 }
