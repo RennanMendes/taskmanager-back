@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.Optional;
-
 @Component
 public class ProjetoRepositoryConverter implements RepositoryConverter<ProjetoEntity, Projeto> {
 
@@ -25,10 +22,7 @@ public class ProjetoRepositoryConverter implements RepositoryConverter<ProjetoEn
                 persistenceObject.getDataInicio(),
                 persistenceObject.getDataFim(),
                 persistenceObject.getStatus(),
-                persistenceObject.getPrioridade(),
-                Optional.ofNullable(persistenceObject.getTarefas())
-                        .map(tarefas -> tarefas.stream().map(converter::mapToTable).toList())
-                        .orElse(Collections.emptyList()) // Retorna uma lista vazia se getTarefas() for null
+                persistenceObject.getPrioridade()
         );
     }
 
@@ -41,10 +35,7 @@ public class ProjetoRepositoryConverter implements RepositoryConverter<ProjetoEn
                 entityObject.getDataInicio(),
                 entityObject.getDataFim(),
                 entityObject.getStatus(),
-                entityObject.getPrioridade(),
-                Optional.ofNullable(entityObject.getTarefas())
-                        .map(tarefas -> tarefas.stream().map(converter::mapToEntity).toList())
-                        .orElse(Collections.emptyList())
+                entityObject.getPrioridade()
         );
     }
 }

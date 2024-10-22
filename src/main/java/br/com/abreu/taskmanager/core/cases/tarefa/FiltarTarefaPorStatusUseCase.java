@@ -6,6 +6,6 @@ import br.com.abreu.taskmanager.core.entities.Tarefa;
 import java.util.List;
 import java.util.UUID;
 
-public interface FiltarTarefaPorStatus {
+public interface FiltarTarefaPorStatusUseCase {
     List<Tarefa> filtrarPorIdEStatus(UUID id, Status status);
 }

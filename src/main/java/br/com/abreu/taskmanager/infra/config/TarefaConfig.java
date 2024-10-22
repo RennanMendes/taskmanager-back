@@ -2,6 +2,7 @@ package br.com.abreu.taskmanager.infra.config;
 
 import br.com.abreu.taskmanager.adapters.TarefaRepositoryService;
 import br.com.abreu.taskmanager.application.tarefa.*;
+import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorId;
 import br.com.abreu.taskmanager.core.cases.tarefa.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,30 +12,30 @@ import org.springframework.context.annotation.Configuration;
 public class TarefaConfig {
 
     @Autowired
-    BuscarTarefaPorId repository;
+    TarefaRepositoryService repository;
 
     @Bean
-    public BuscarTarefaPorId buscarTarefaPorId(TarefaRepositoryService repository) {
+    public BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase(TarefaRepositoryService repository) {
         return new BuscarTarefaPorIdImpl(repository);
     }
 
     @Bean
-    public BuscarTarefasPorProjeto buscarTarefasPorProjeto(TarefaRepositoryService repository) {
-        return new BuscarTarefasPorProjetoImpl(repository);
+    public BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase(TarefaRepositoryService repository) {
+        return new BuscarTarefasPorProjetoUseCaseImpl(repository);
     }
 
     @Bean
-    public CriarTarefa criarTarefa(TarefaRepositoryService repository) {
-        return new CriarTarefaImpl(repository);
+    public CriarTarefaUseCase criarTarefaUseCase(TarefaRepositoryService repository, BuscarProjetoPorId buscarProjetoPorId) {
+        return new CriarTarefaUseCaseImpl(repository, buscarProjetoPorId);
     }
 
     @Bean
-    public ExcluirTarefa excluirTarefa(TarefaRepositoryService repository, BuscarTarefaPorId buscarTarefaPorId) {
-        return new ExcluirTarefaImpl(repository, buscarTarefaPorId);
+    public ExcluirTarefaUseCase excluirTarefaUseCase(TarefaRepositoryService repository, BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase) {
+        return new ExcluirTarefaUseCaseImpl(repository, buscarTarefaPorIdUseCase);
     }
 
     @Bean
-    public FiltarTarefaPorStatus filtarTarefaPorStatus(TarefaRepositoryService repository) {
-        return new FiltarTarefaPorStatusImpl(repository);
+    public FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase(TarefaRepositoryService repository) {
+        return new FiltarTarefaPorStatusUseCaseImpl(repository);
     }
 }

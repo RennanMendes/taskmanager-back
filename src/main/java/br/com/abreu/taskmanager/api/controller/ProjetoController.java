@@ -14,20 +14,21 @@ import java.util.UUID;
 @Controller
 public class ProjetoController {
 
-    @Autowired
-    private BuscarProjetoPorId buscarProjetoPorId;
+    private final BuscarProjetoPorId buscarProjetoPorId;
+    private final BuscarProjetoPorNome buscarProjetoPorNome;
+    private final BuscarTodosProjetos buscarTodosProjetos;
+    private final CriarProjeto criarProjeto;
+    private final ExcluirProjeto excluirProjeto;
 
     @Autowired
-    private BuscarProjetoPorNome buscarProjetoPorNome;
-
-    @Autowired
-    private BuscarTodosProjetos buscarTodosProjetos;
-
-    @Autowired
-    private CriarProjeto criarProjeto;
-
-    @Autowired
-    private ExcluirProjeto excluirProjeto;
+    public ProjetoController(BuscarProjetoPorId buscarProjetoPorId, BuscarProjetoPorNome buscarProjetoPorNome,
+                             BuscarTodosProjetos buscarTodosProjetos, CriarProjeto criarProjeto, ExcluirProjeto excluirProjeto) {
+        this.buscarProjetoPorId = buscarProjetoPorId;
+        this.buscarProjetoPorNome = buscarProjetoPorNome;
+        this.buscarTodosProjetos = buscarTodosProjetos;
+        this.criarProjeto = criarProjeto;
+        this.excluirProjeto = excluirProjeto;
+    }
 
     @QueryMapping
     public Projeto buscarPorId(@Argument UUID id) {

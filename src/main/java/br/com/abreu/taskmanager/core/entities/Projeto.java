@@ -21,5 +21,4 @@ public class Projeto {
     private LocalDate dataFim;
     private Status status;
     private Prioridade prioridade;
-    private List<Tarefa> tarefas;
 }

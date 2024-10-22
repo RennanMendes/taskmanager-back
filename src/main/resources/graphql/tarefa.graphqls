@@ -1,0 +1,30 @@
+extend type Query {
+    buscarTarefaPorId(id: ID) : TarefaOut
+    buscarTarefasPorProjeto(idProjeto: ID): [TarefaOut]
+    filtarTarefaPorStatus(idProjeto: ID, status: Status): [TarefaOut]
+}
+
+extend type Mutation{
+    criarTarefa(idProjeto: ID, tarefa: Tarefa): TarefaOut
+}
+
+input Tarefa {
+    titulo: String!
+    descricao: String
+    prazo: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+}
+
+type TarefaOut {
+    id: ID
+    titulo: String!
+    descricao: String
+    prazo: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+}

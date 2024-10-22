@@ -2,35 +2,19 @@ type Query {
     buscarPorId(id: ID!) : ProjetoOut
     buscarPorNome(nome: String) : [ProjetoOut]
     buscarTodos: [ProjetoOut]
+
+    #    Endpoint Tarefa
+#    buscarTarefaPorId(id: ID) : TarefaOut
+#    buscarTarefasPorProjeto(idProjeto: ID): [TarefaOut]
+#    filtarTarefaPorStatus(idProjeto: ID, status: Status): [TarefaOut]
 }
 
 type Mutation{
     criar(projeto: Projeto!) : ProjetoOut
     excluir(id: ID!) : Boolean
-}
 
-type ProjetoOut {
-    id: ID
-    nome: String!
-    descricao: String
-    dataInicio: String!
-    dataFim: String
-    status: Status!
-    prioridade: Prioridade!
-    responsavel: String!
-    tarefas: [Tarefa]
-}
-
-type Tarefa {
-    id: ID
-    titulo: String!
-    descricao: String
-    prazo: String
-    dataInicio: String!
-    dataFim: String
-    status: Status!
-    prioridade: Prioridade!
-    projeto: String!
+    #    Endpoint Tarefa
+#    criarTarefa(tarefa: Tarefa): TarefaOut
 }
 
 input Projeto {
@@ -42,6 +26,41 @@ input Projeto {
     prioridade: Prioridade!
     responsavel: String!
 }
+
+type ProjetoOut {
+    id: ID
+    nome: String!
+    descricao: String
+    dataInicio: String!
+    dataFim: String
+    status: Status!
+    prioridade: Prioridade!
+    responsavel: String!
+    tarefas: [TarefaOut]
+}
+
+#input Tarefa {
+#    titulo: String!
+#    descricao: String
+#    prazo: String
+#    dataInicio: String!
+#    dataFim: String
+#    status: Status!
+#    prioridade: Prioridade!
+#    projeto: String!
+#}
+#
+#type TarefaOut {
+#    id: ID
+#    titulo: String!
+#    descricao: String
+#    prazo: String
+#    dataInicio: String!
+#    dataFim: String
+#    status: Status!
+#    prioridade: Prioridade!
+#    projeto: String!
+#}
 
 enum Status {
     PLANEJAMENTO

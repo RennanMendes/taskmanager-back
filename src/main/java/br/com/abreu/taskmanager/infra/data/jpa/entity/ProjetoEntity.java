@@ -35,7 +35,4 @@ public class ProjetoEntity {
     @Enumerated(EnumType.STRING)
     private Prioridade prioridade;
 
-    @OneToMany(mappedBy = "projeto", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<TarefaEntity> tarefas;
 }

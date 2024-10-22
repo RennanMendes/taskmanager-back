@@ -38,6 +38,5 @@ public class TarefaEntity {
 
     @ManyToOne
     @JoinColumn(name = "projeto_id")
-    @JsonBackReference
     private ProjetoEntity projeto;
 }
