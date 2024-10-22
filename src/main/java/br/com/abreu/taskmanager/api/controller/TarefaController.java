@@ -37,12 +37,12 @@ public class TarefaController {
     }
 
     @QueryMapping
-    public List<Tarefa> buscarTarefasPorProjeto(@Argument UUID idProjeto){
+    public List<Tarefa> buscarTarefasPorProjetoId(@Argument UUID idProjeto){
         return buscarTarefasPorProjetoUseCase.buscarPorProjeto(idProjeto);
     }
 
     @QueryMapping
-    public List<Tarefa> filtarTarefaPorStatus(UUID idProjeto, Status status){
+    public List<Tarefa> filtarTarefaPorProjetoIdEStatus(UUID idProjeto, Status status){
         return filtarTarefaPorStatusUseCase.filtrarPorIdEStatus(idProjeto, status);
     }
 

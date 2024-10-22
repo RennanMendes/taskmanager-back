@@ -1,7 +1,7 @@
 extend type Query {
     buscarTarefaPorId(id: ID) : TarefaOut
-    buscarTarefasPorProjeto(idProjeto: ID): [TarefaOut]
-    filtarTarefaPorStatus(idProjeto: ID, status: Status): [TarefaOut]
+    buscarTarefasPorProjetoId(idProjeto: ID): [TarefaOut]
+    filtarTarefaPorProjetoIdEStatus(idProjeto: ID, status: Status): [TarefaOut]
 }
 
 extend type Mutation{
@@ -27,4 +27,5 @@ type TarefaOut {
     dataFim: String
     status: Status!
     prioridade: Prioridade!
+    projeto: ProjetoOut
 }
