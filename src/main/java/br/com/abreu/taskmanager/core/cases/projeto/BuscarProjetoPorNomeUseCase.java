@@ -4,6 +4,6 @@ import br.com.abreu.taskmanager.core.entities.Projeto;
 
 import java.util.List;
 
-public interface BuscarTodosProjetos {
-    List<Projeto> buscar();
+public interface BuscarProjetoPorNomeUseCase {
+    List<Projeto> buscar(String nome);
 }

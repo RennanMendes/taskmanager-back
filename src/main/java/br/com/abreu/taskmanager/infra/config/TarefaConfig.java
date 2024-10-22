@@ -2,7 +2,7 @@ package br.com.abreu.taskmanager.infra.config;
 
 import br.com.abreu.taskmanager.adapters.TarefaRepositoryService;
 import br.com.abreu.taskmanager.application.tarefa.*;
-import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorId;
+import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorIdUseCase;
 import br.com.abreu.taskmanager.core.cases.tarefa.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ public class TarefaConfig {
 
     @Bean
     public BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase(TarefaRepositoryService repository) {
-        return new BuscarTarefaPorIdImpl(repository);
+        return new BuscarTarefaPorIdUseCaseImpl(repository);
     }
 
     @Bean
@@ -25,8 +25,8 @@ public class TarefaConfig {
     }
 
     @Bean
-    public CriarTarefaUseCase criarTarefaUseCase(TarefaRepositoryService repository, BuscarProjetoPorId buscarProjetoPorId) {
-        return new CriarTarefaUseCaseImpl(repository, buscarProjetoPorId);
+    public CriarTarefaUseCase criarTarefaUseCase(TarefaRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase) {
+        return new CriarTarefaUseCaseImpl(repository, buscarProjetoPorIdUseCase);
     }
 
     @Bean

@@ -14,46 +14,46 @@ import java.util.UUID;
 @Controller
 public class ProjetoController {
 
-    private final BuscarProjetoPorId buscarProjetoPorId;
-    private final BuscarProjetoPorNome buscarProjetoPorNome;
-    private final BuscarTodosProjetos buscarTodosProjetos;
-    private final CriarProjeto criarProjeto;
-    private final ExcluirProjeto excluirProjeto;
+    private final BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
+    private final BuscarProjetoPorNomeUseCase buscarProjetoPorNomeUseCase;
+    private final BuscarTodosProjetosUseCase buscarTodosProjetosUseCase;
+    private final CriarProjetoUseCase criarProjetoUseCase;
+    private final ExcluirProjetoUseCase excluirProjetoUseCase;
 
     @Autowired
-    public ProjetoController(BuscarProjetoPorId buscarProjetoPorId, BuscarProjetoPorNome buscarProjetoPorNome,
-                             BuscarTodosProjetos buscarTodosProjetos, CriarProjeto criarProjeto, ExcluirProjeto excluirProjeto) {
-        this.buscarProjetoPorId = buscarProjetoPorId;
-        this.buscarProjetoPorNome = buscarProjetoPorNome;
-        this.buscarTodosProjetos = buscarTodosProjetos;
-        this.criarProjeto = criarProjeto;
-        this.excluirProjeto = excluirProjeto;
+    public ProjetoController(BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase, BuscarProjetoPorNomeUseCase buscarProjetoPorNomeUseCase,
+                             BuscarTodosProjetosUseCase buscarTodosProjetosUseCase, CriarProjetoUseCase criarProjetoUseCase, ExcluirProjetoUseCase excluirProjetoUseCase) {
+        this.buscarProjetoPorIdUseCase = buscarProjetoPorIdUseCase;
+        this.buscarProjetoPorNomeUseCase = buscarProjetoPorNomeUseCase;
+        this.buscarTodosProjetosUseCase = buscarTodosProjetosUseCase;
+        this.criarProjetoUseCase = criarProjetoUseCase;
+        this.excluirProjetoUseCase = excluirProjetoUseCase;
     }
 
     @QueryMapping
-    public Projeto buscarPorId(@Argument UUID id) {
-        return buscarProjetoPorId.buscar(id);
+    public Projeto buscarProjetoPorId(@Argument UUID id) {
+        return buscarProjetoPorIdUseCase.buscar(id);
     }
 
     @QueryMapping
-    public List<Projeto> buscarPorNome(@Argument String nome) {
-        return buscarProjetoPorNome.buscar(nome);
+    public List<Projeto> buscarProjetoPorNome(@Argument String nome) {
+        return buscarProjetoPorNomeUseCase.buscar(nome);
     }
 
     @QueryMapping
-    public List<Projeto> buscarTodos() {
-        return buscarTodosProjetos.buscar();
+    public List<Projeto> buscarTodosOsProjetos() {
+        return buscarTodosProjetosUseCase.buscar();
     }
 
     @MutationMapping
-    public Projeto criar( @Argument Projeto projeto){
-        return criarProjeto.criar(projeto);
+    public Projeto criarProjeto(@Argument Projeto projeto){
+        return criarProjetoUseCase.criar(projeto);
     }
 
     // TODO-> Criar objeto de retorno para exclusão
     @MutationMapping
-    public Boolean excluir(@Argument UUID id){
-        excluirProjeto.excluir(id);
+    public Boolean excluirProjeto(@Argument UUID id){
+        excluirProjetoUseCase.excluir(id);
         return true;
     }
 

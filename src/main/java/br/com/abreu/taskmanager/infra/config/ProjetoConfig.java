@@ -2,6 +2,7 @@ package br.com.abreu.taskmanager.infra.config;
 
 import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
 import br.com.abreu.taskmanager.application.projeto.*;
+import br.com.abreu.taskmanager.core.cases.projeto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,27 +14,27 @@ public class ProjetoConfig {
     ProjetoRepositoryService repository;
 
     @Bean
-    public BuscarProjetoPorIdImpl buscarProjetoPorId(ProjetoRepositoryService repository) {
-        return new BuscarProjetoPorIdImpl(repository);
+    public BuscarProjetoPorIdUseCase buscarProjetoPorId(ProjetoRepositoryService repository) {
+        return new BuscarProjetoPorIdUseCaseImpl(repository);
     }
 
     @Bean
-    public BuscarProjetoPorNomeImpl buscarProjetoPorNome(ProjetoRepositoryService repository) {
-        return new BuscarProjetoPorNomeImpl(repository);
+    public BuscarProjetoPorNomeUseCase buscarProjetoPorNome(ProjetoRepositoryService repository) {
+        return new BuscarProjetoPorNomeUseCaseImpl(repository);
     }
 
     @Bean
-    public BuscarTodosProjetosImpl buscarTodosProjetos(ProjetoRepositoryService repository) {
-        return new BuscarTodosProjetosImpl(repository);
+    public BuscarTodosProjetosUseCase buscarTodosProjetos(ProjetoRepositoryService repository) {
+        return new BuscarTodosProjetosUseCaseImpl(repository);
     }
 
     @Bean
-    public CriarProjetoImpl criarProjeto(ProjetoRepositoryService repository) {
-        return new CriarProjetoImpl(repository);
+    public CriarProjetoUseCase criarProjeto(ProjetoRepositoryService repository) {
+        return new CriarProjetoUseCaseImpl(repository);
     }
 
     @Bean
-    public ExcluirProjetoImpl excluirProjeto(ProjetoRepositoryService repository, BuscarProjetoPorIdImpl buscarProjetoPorId) {
-        return new ExcluirProjetoImpl(repository, buscarProjetoPorId);
+    public ExcluirProjetoUseCase excluirProjeto(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCaseImpl buscarProjetoPorId) {
+        return new ExcluirProjetoUseCaseImpl(repository, buscarProjetoPorId);
     }
 }

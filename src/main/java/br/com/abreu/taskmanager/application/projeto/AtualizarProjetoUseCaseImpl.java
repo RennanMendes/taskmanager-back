@@ -1,6 +1,6 @@
 package br.com.abreu.taskmanager.application.projeto;
 
-public class AtualizarProjetoImpl {
+public class AtualizarProjetoUseCaseImpl {
 
 
 }

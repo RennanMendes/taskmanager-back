@@ -1,14 +1,14 @@
 package br.com.abreu.taskmanager.application.projeto;
 
 import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
-import br.com.abreu.taskmanager.core.cases.projeto.CriarProjeto;
+import br.com.abreu.taskmanager.core.cases.projeto.CriarProjetoUseCase;
 import br.com.abreu.taskmanager.core.entities.Projeto;
 
-public class CriarProjetoImpl implements CriarProjeto {
+public class CriarProjetoUseCaseImpl implements CriarProjetoUseCase {
 
     private final ProjetoRepositoryService repository;
 
-    public CriarProjetoImpl(ProjetoRepositoryService repository) {
+    public CriarProjetoUseCaseImpl(ProjetoRepositoryService repository) {
         this.repository = repository;
     }
 

@@ -7,11 +7,11 @@ import br.com.abreu.taskmanager.core.entities.Tarefa;
 
 import java.util.UUID;
 
-public class BuscarTarefaPorIdImpl implements BuscarTarefaPorIdUseCase {
+public class BuscarTarefaPorIdUseCaseImpl implements BuscarTarefaPorIdUseCase {
 
     private final TarefaRepositoryService repository;
 
-    public BuscarTarefaPorIdImpl(TarefaRepositoryService repository) {
+    public BuscarTarefaPorIdUseCaseImpl(TarefaRepositoryService repository) {
         this.repository = repository;
     }
 

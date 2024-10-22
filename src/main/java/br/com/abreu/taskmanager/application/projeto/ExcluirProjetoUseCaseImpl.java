@@ -1,18 +1,18 @@
 package br.com.abreu.taskmanager.application.projeto;
 
 import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
-import br.com.abreu.taskmanager.core.cases.projeto.ExcluirProjeto;
+import br.com.abreu.taskmanager.core.cases.projeto.ExcluirProjetoUseCase;
 import br.com.abreu.taskmanager.core.entities.Projeto;
 
 import java.util.UUID;
 
 
-public class ExcluirProjetoImpl implements ExcluirProjeto {
+public class ExcluirProjetoUseCaseImpl implements ExcluirProjetoUseCase {
 
     private final ProjetoRepositoryService repository;
-    private final BuscarProjetoPorIdImpl buscarProjetoPorId;
+    private final BuscarProjetoPorIdUseCaseImpl buscarProjetoPorId;
 
-    public ExcluirProjetoImpl(ProjetoRepositoryService repository, BuscarProjetoPorIdImpl buscarProjetoPorId) {
+    public ExcluirProjetoUseCaseImpl(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCaseImpl buscarProjetoPorId) {
         this.repository = repository;
         this.buscarProjetoPorId = buscarProjetoPorId;
     }
