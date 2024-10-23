@@ -6,16 +6,17 @@ type Query {
 
 type Mutation{
     criarProjeto(projeto: Projeto!) : ProjetoOut
+    atualizarProjeto(id: ID, projeto: Projeto) : ProjetoOut
 }
 
 input Projeto {
-    nome: String!
+    nome: String
     descricao: String
-    dataInicio: String!
+    dataInicio: String
     dataFim: String
-    status: Status!
-    prioridade: Prioridade!
-    responsavel: String!
+    status: Status
+    prioridade: Prioridade
+    responsavel: String
 }
 
 type ProjetoOut {
@@ -27,7 +28,6 @@ type ProjetoOut {
     status: Status!
     prioridade: Prioridade!
     responsavel: String!
-    tarefas: [TarefaOut]
 }
 
 enum Status {

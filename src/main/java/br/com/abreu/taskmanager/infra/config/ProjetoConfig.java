@@ -14,6 +14,11 @@ public class ProjetoConfig {
     ProjetoRepositoryService repository;
 
     @Bean
+    public AtualizarProjetoUseCase atualizarProjetoUseCase(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorId){
+        return new AtualizarProjetoUseCaseImpl(repository, buscarProjetoPorId);
+    }
+
+    @Bean
     public BuscarProjetoPorIdUseCase buscarProjetoPorId(ProjetoRepositoryService repository) {
         return new BuscarProjetoPorIdUseCaseImpl(repository);
     }
@@ -34,7 +39,7 @@ public class ProjetoConfig {
     }
 
     @Bean
-    public ExcluirProjetoUseCase excluirProjeto(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCaseImpl buscarProjetoPorId) {
+    public ExcluirProjetoUseCase excluirProjeto(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorId) {
         return new ExcluirProjetoUseCaseImpl(repository, buscarProjetoPorId);
     }
 }

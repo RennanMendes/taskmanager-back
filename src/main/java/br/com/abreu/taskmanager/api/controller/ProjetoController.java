@@ -19,15 +19,18 @@ public class ProjetoController {
     private final BuscarTodosProjetosUseCase buscarTodosProjetosUseCase;
     private final CriarProjetoUseCase criarProjetoUseCase;
     private final ExcluirProjetoUseCase excluirProjetoUseCase;
+    private final AtualizarProjetoUseCase atualizarProjetoUseCase;
 
     @Autowired
     public ProjetoController(BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase, BuscarProjetoPorNomeUseCase buscarProjetoPorNomeUseCase,
-                             BuscarTodosProjetosUseCase buscarTodosProjetosUseCase, CriarProjetoUseCase criarProjetoUseCase, ExcluirProjetoUseCase excluirProjetoUseCase) {
+                             BuscarTodosProjetosUseCase buscarTodosProjetosUseCase, CriarProjetoUseCase criarProjetoUseCase,
+                             ExcluirProjetoUseCase excluirProjetoUseCase, AtualizarProjetoUseCase atualizarProjetoUseCase) {
         this.buscarProjetoPorIdUseCase = buscarProjetoPorIdUseCase;
         this.buscarProjetoPorNomeUseCase = buscarProjetoPorNomeUseCase;
         this.buscarTodosProjetosUseCase = buscarTodosProjetosUseCase;
         this.criarProjetoUseCase = criarProjetoUseCase;
         this.excluirProjetoUseCase = excluirProjetoUseCase;
+        this.atualizarProjetoUseCase = atualizarProjetoUseCase;
     }
 
     @QueryMapping
@@ -46,13 +49,18 @@ public class ProjetoController {
     }
 
     @MutationMapping
-    public Projeto criarProjeto(@Argument Projeto projeto){
+    public Projeto criarProjeto(@Argument Projeto projeto) {
         return criarProjetoUseCase.criar(projeto);
+    }
+
+    @MutationMapping
+    public Projeto atualizarProjeto(@Argument UUID id, @Argument Projeto projeto) {
+        return atualizarProjetoUseCase.atualizar(id, projeto);
     }
 
     // TODO-> Criar objeto de retorno para exclusão
     @MutationMapping
-    public Boolean excluirProjeto(@Argument UUID id){
+    public Boolean excluirProjeto(@Argument UUID id) {
         excluirProjetoUseCase.excluir(id);
         return true;
     }
