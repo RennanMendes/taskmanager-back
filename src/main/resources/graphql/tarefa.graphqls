@@ -6,26 +6,27 @@ extend type Query {
 
 extend type Mutation{
     criarTarefa(idProjeto: ID, tarefa: Tarefa): TarefaOut
+    atualizarTarefa(id: ID, tarefa: Tarefa): TarefaOut
 }
 
 input Tarefa {
-    titulo: String!
+    titulo: String
     descricao: String
     prazo: String
-    dataInicio: String!
+    dataInicio: String
     dataFim: String
-    status: Status!
-    prioridade: Prioridade!
+    status: Status
+    prioridade: Prioridade
 }
 
 type TarefaOut {
     id: ID
-    titulo: String!
+    titulo: String
     descricao: String
     prazo: String
-    dataInicio: String!
+    dataInicio: String
     dataFim: String
-    status: Status!
-    prioridade: Prioridade!
+    status: Status
+    prioridade: Prioridade
     projeto: ProjetoOut
 }

@@ -23,4 +23,17 @@ public class Tarefa {
     private Prioridade prioridade;
     private String responsavel;
     private Projeto projeto;
+
+    public Tarefa atualizar(Tarefa dto) {
+        this.titulo = dto.getTitulo() != null ? dto.getTitulo() : this.titulo;
+        this.descricao = dto.getDescricao() != null ? dto.getDescricao() : this.descricao;
+        this.prazo = dto.getPrazo() != null ? dto.getPrazo() : this.prazo;
+        this.dataInicio = dto.getDataInicio() != null ? dto.getDataInicio() : this.dataInicio;
+        this.dataFim = dto.getDataFim() != null ? dto.getDataFim() : this.dataFim;
+        this.status = dto.getStatus() != null ? dto.getStatus() : this.status;
+        this.prioridade = dto.getPrioridade() != null ? dto.getPrioridade() : this.prioridade;
+        this.responsavel = dto.getResponsavel() != null ? dto.getResponsavel() : this.responsavel;
+        return this;
+    }
+
 }

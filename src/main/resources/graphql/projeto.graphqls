@@ -21,13 +21,13 @@ input Projeto {
 
 type ProjetoOut {
     id: ID
-    nome: String!
+    nome: String
     descricao: String
-    dataInicio: String!
+    dataInicio: String
     dataFim: String
-    status: Status!
-    prioridade: Prioridade!
-    responsavel: String!
+    status: Status
+    prioridade: Prioridade
+    responsavel: String
 }
 
 enum Status {

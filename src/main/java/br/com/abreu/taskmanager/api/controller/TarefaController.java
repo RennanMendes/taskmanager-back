@@ -20,16 +20,18 @@ public class TarefaController {
     private final CriarTarefaUseCase criarTarefaUseCase;
     private final ExcluirTarefaUseCase excluirTarefaUseCase;
     private final FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase;
+    private final AtualizarTarefaUseCase atualizarTarefaUseCase;
 
     @Autowired
     public TarefaController(BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase, BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase,
                             CriarTarefaUseCase criarTarefaUseCase, ExcluirTarefaUseCase excluirTarefaUseCase,
-                            FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase) {
+                            FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase, AtualizarTarefaUseCase atualizarTarefaUseCase) {
         this.buscarTarefaPorIdUseCase = buscarTarefaPorIdUseCase;
         this.buscarTarefasPorProjetoUseCase = buscarTarefasPorProjetoUseCase;
         this.criarTarefaUseCase = criarTarefaUseCase;
         this.excluirTarefaUseCase = excluirTarefaUseCase;
         this.filtarTarefaPorStatusUseCase = filtarTarefaPorStatusUseCase;
+        this.atualizarTarefaUseCase = atualizarTarefaUseCase;
     }
 
     @QueryMapping
@@ -50,6 +52,11 @@ public class TarefaController {
     @MutationMapping
     public Tarefa criarTarefa(@Argument UUID idProjeto, @Argument Tarefa tarefa) {
         return criarTarefaUseCase.criar(idProjeto, tarefa);
+    }
+
+    @MutationMapping
+    public Tarefa atualizarTarefa(@Argument UUID id, @Argument Tarefa tarefa){
+        return atualizarTarefaUseCase.atualizar(id, tarefa);
     }
 
 }
