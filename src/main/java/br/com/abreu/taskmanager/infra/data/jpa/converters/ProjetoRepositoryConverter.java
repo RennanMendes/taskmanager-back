@@ -2,16 +2,10 @@ package br.com.abreu.taskmanager.infra.data.jpa.converters;
 
 import br.com.abreu.taskmanager.core.entities.Projeto;
 import br.com.abreu.taskmanager.infra.data.jpa.entity.ProjetoEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProjetoRepositoryConverter implements RepositoryConverter<ProjetoEntity, Projeto> {
-
-    @Autowired
-    @Lazy
-    private TarefaRepositoryConverter converter;
 
     @Override
     public ProjetoEntity mapToTable(Projeto persistenceObject) {

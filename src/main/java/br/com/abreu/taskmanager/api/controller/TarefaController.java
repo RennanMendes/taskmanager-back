@@ -1,5 +1,7 @@
 package br.com.abreu.taskmanager.api.controller;
 
+import br.com.abreu.taskmanager.api.converter.TarefaConverter;
+import br.com.abreu.taskmanager.api.dto.TarefaRequestDto;
 import br.com.abreu.taskmanager.core.cases.tarefa.*;
 import br.com.abreu.taskmanager.core.entities.Status;
 import br.com.abreu.taskmanager.core.entities.Tarefa;
@@ -21,17 +23,19 @@ public class TarefaController {
     private final ExcluirTarefaUseCase excluirTarefaUseCase;
     private final FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase;
     private final AtualizarTarefaUseCase atualizarTarefaUseCase;
+    private final TarefaConverter converter;
 
     @Autowired
     public TarefaController(BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase, BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase,
                             CriarTarefaUseCase criarTarefaUseCase, ExcluirTarefaUseCase excluirTarefaUseCase,
-                            FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase, AtualizarTarefaUseCase atualizarTarefaUseCase) {
+                            FiltarTarefaPorStatusUseCase filtarTarefaPorStatusUseCase, AtualizarTarefaUseCase atualizarTarefaUseCase, TarefaConverter converter) {
         this.buscarTarefaPorIdUseCase = buscarTarefaPorIdUseCase;
         this.buscarTarefasPorProjetoUseCase = buscarTarefasPorProjetoUseCase;
         this.criarTarefaUseCase = criarTarefaUseCase;
         this.excluirTarefaUseCase = excluirTarefaUseCase;
         this.filtarTarefaPorStatusUseCase = filtarTarefaPorStatusUseCase;
         this.atualizarTarefaUseCase = atualizarTarefaUseCase;
+        this.converter = converter;
     }
 
     @QueryMapping
@@ -50,13 +54,13 @@ public class TarefaController {
     }
 
     @MutationMapping
-    public Tarefa criarTarefa(@Argument UUID idProjeto, @Argument Tarefa tarefa) {
-        return criarTarefaUseCase.criar(idProjeto, tarefa);
+    public Tarefa criarTarefa(@Argument UUID idProjeto, @Argument TarefaRequestDto tarefa) {
+        return criarTarefaUseCase.criar(idProjeto, converter.dtoToEntity(tarefa));
     }
 
     @MutationMapping
-    public Tarefa atualizarTarefa(@Argument UUID id, @Argument Tarefa tarefa){
-        return atualizarTarefaUseCase.atualizar(id, tarefa);
+    public Tarefa atualizarTarefa(@Argument UUID id, @Argument TarefaRequestDto tarefa) {
+        return atualizarTarefaUseCase.atualizar(id, converter.dtoToEntity(tarefa));
     }
 
 }

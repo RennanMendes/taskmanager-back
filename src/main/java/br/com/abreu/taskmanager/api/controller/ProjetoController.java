@@ -1,5 +1,7 @@
 package br.com.abreu.taskmanager.api.controller;
 
+import br.com.abreu.taskmanager.api.converter.ProjetoConverter;
+import br.com.abreu.taskmanager.api.dto.ProjetoRequestDto;
 import br.com.abreu.taskmanager.core.cases.projeto.*;
 import br.com.abreu.taskmanager.core.entities.Projeto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +22,21 @@ public class ProjetoController {
     private final CriarProjetoUseCase criarProjetoUseCase;
     private final ExcluirProjetoUseCase excluirProjetoUseCase;
     private final AtualizarProjetoUseCase atualizarProjetoUseCase;
+    private final ProjetoConverter converter;
 
     @Autowired
-    public ProjetoController(BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase, BuscarProjetoPorNomeUseCase buscarProjetoPorNomeUseCase,
-                             BuscarTodosProjetosUseCase buscarTodosProjetosUseCase, CriarProjetoUseCase criarProjetoUseCase,
-                             ExcluirProjetoUseCase excluirProjetoUseCase, AtualizarProjetoUseCase atualizarProjetoUseCase) {
+    public ProjetoController(BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase, BuscarProjetoPorNomeUseCase
+            buscarProjetoPorNomeUseCase, BuscarTodosProjetosUseCase buscarTodosProjetosUseCase,
+                             CriarProjetoUseCase criarProjetoUseCase, ExcluirProjetoUseCase excluirProjetoUseCase,
+                             AtualizarProjetoUseCase atualizarProjetoUseCase, ProjetoConverter converter) {
+
         this.buscarProjetoPorIdUseCase = buscarProjetoPorIdUseCase;
         this.buscarProjetoPorNomeUseCase = buscarProjetoPorNomeUseCase;
         this.buscarTodosProjetosUseCase = buscarTodosProjetosUseCase;
         this.criarProjetoUseCase = criarProjetoUseCase;
         this.excluirProjetoUseCase = excluirProjetoUseCase;
         this.atualizarProjetoUseCase = atualizarProjetoUseCase;
+        this.converter = converter;
     }
 
     @QueryMapping
@@ -49,13 +55,13 @@ public class ProjetoController {
     }
 
     @MutationMapping
-    public Projeto criarProjeto(@Argument Projeto projeto) {
-        return criarProjetoUseCase.criar(projeto);
+    public Projeto criarProjeto(@Argument ProjetoRequestDto projeto) {
+        return criarProjetoUseCase.criar(converter.dtoToEntity(projeto));
     }
 
     @MutationMapping
-    public Projeto atualizarProjeto(@Argument UUID id, @Argument Projeto projeto) {
-        return atualizarProjetoUseCase.atualizar(id, projeto);
+    public Projeto atualizarProjeto(@Argument UUID id, @Argument ProjetoRequestDto projeto) {
+        return atualizarProjetoUseCase.atualizar(id, converter.dtoToEntity(projeto));
     }
 
     // TODO-> Criar objeto de retorno para exclusão

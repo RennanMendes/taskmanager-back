@@ -3,14 +3,12 @@ package br.com.abreu.taskmanager.infra.data.jpa.converters;
 import br.com.abreu.taskmanager.core.entities.Tarefa;
 import br.com.abreu.taskmanager.infra.data.jpa.entity.TarefaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TarefaRepositoryConverter implements RepositoryConverter<TarefaEntity, Tarefa> {
 
     @Autowired
-    @Lazy
     private ProjetoRepositoryConverter converter;
 
     @Override
