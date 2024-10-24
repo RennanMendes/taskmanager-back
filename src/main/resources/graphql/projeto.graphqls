@@ -7,6 +7,7 @@ type Query {
 type Mutation{
     criarProjeto(projeto: Projeto!) : ProjetoOut
     atualizarProjeto(id: ID, projeto: Projeto) : ProjetoOut
+    excluirProjeto(id: ID!): Boolean
 }
 
 input Projeto {

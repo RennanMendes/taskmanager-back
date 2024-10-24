@@ -64,7 +64,6 @@ public class ProjetoController {
         return atualizarProjetoUseCase.atualizar(id, converter.dtoToEntity(projeto));
     }
 
-    // TODO-> Criar objeto de retorno para exclusão
     @MutationMapping
     public Boolean excluirProjeto(@Argument UUID id) {
         excluirProjetoUseCase.excluir(id);
