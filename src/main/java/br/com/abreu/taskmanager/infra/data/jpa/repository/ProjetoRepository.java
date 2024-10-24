@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProjetoRepository extends JpaRepository<ProjetoEntity, UUID> {
-    List<ProjetoEntity> findByNome(String nome);
+    List<ProjetoEntity> findByNomeContainingIgnoreCase(String nome);
 }

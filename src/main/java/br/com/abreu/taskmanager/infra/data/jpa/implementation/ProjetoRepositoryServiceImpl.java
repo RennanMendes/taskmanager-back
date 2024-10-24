@@ -32,7 +32,7 @@ public class ProjetoRepositoryServiceImpl implements ProjetoRepositoryService {
 
     @Override
     public List<Projeto> buscarPorNome(String nome) {
-        List<ProjetoEntity> entity = repository.findByNome(nome);
+        List<ProjetoEntity> entity = repository.findByNomeContainingIgnoreCase(nome);
         return entity.stream().map(converter::mapToEntity).toList();
     }
 
