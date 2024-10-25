@@ -21,13 +21,13 @@ import static org.mockito.Mockito.*;
 class ExcluirProjetoUseCaseImplTest {
 
     @InjectMocks
-    ExcluirProjetoUseCaseImpl excluirProjetoUseCase;
+    private ExcluirProjetoUseCaseImpl excluirProjetoUseCase;
 
     @Mock
-    BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
+    private BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

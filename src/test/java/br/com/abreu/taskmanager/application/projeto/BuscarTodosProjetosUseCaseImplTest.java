@@ -20,10 +20,10 @@ import static org.mockito.Mockito.*;
 class BuscarTodosProjetosUseCaseImplTest {
 
     @InjectMocks
-    BuscarTodosProjetosUseCaseImpl buscarTodosProjetosUseCase;
+    private BuscarTodosProjetosUseCaseImpl buscarTodosProjetosUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

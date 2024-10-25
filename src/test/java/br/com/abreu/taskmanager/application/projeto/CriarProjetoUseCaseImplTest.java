@@ -18,10 +18,10 @@ import static org.mockito.Mockito.*;
 class CriarProjetoUseCaseImplTest {
 
     @InjectMocks
-    CriarProjetoUseCaseImpl criarProjetoUseCase;
+    private CriarProjetoUseCaseImpl criarProjetoUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

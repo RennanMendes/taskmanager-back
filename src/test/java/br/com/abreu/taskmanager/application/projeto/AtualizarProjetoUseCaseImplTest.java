@@ -22,13 +22,13 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 class AtualizarProjetoUseCaseImplTest {
 
     @InjectMocks
-    AtualizarProjetoUseCaseImpl atualizarProjetoUseCase;
+    private AtualizarProjetoUseCaseImpl atualizarProjetoUseCase;
 
     @Mock
-    BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
+    private BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

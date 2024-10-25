@@ -38,7 +38,7 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
     }
 
     @Override
-    public Tarefa save(Tarefa tarefa) {
+    public Tarefa salvar(Tarefa tarefa) {
         TarefaEntity entity = repository.save(converter.mapToTable(tarefa));
         return converter.mapToEntity(entity);
     }
@@ -52,5 +52,10 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
     public List<Tarefa> filtarPorIdEStatus(UUID id, Status status) {
         List<TarefaEntity> entity = repository.findByProjetoIdAndStatus(id, status);
         return entity.stream().map(converter::mapToEntity).toList();
+    }
+
+    @Override
+    public Boolean existeTarefaPorProjetoId(UUID idProjeto){
+        return repository.existsByProjetoId(idProjeto);
     }
 }

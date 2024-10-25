@@ -21,10 +21,10 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 class BuscarProjetoPorNomeUseCaseImplTest {
 
     @InjectMocks
-    BuscarProjetoPorNomeUseCaseImpl buscarProjetoPorNomeUseCase;
+    private BuscarProjetoPorNomeUseCaseImpl buscarProjetoPorNomeUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

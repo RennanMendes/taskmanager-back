@@ -20,6 +20,6 @@ public class CriarTarefaUseCaseImpl implements CriarTarefaUseCase {
     @Override
     public Tarefa criar(UUID idProjeto, Tarefa tarefa) {
         tarefa.setProjeto(buscarProjetoPorIdUseCase.buscar(idProjeto));
-        return repository.save(tarefa);
+        return repository.salvar(tarefa);
     }
 }

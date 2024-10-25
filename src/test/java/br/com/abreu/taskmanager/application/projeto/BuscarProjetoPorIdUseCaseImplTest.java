@@ -21,10 +21,10 @@ import static org.mockito.Mockito.*;
 class BuscarProjetoPorIdUseCaseImplTest {
 
     @InjectMocks
-    BuscarProjetoPorIdUseCaseImpl buscarProjetoPorIdUseCase;
+    private BuscarProjetoPorIdUseCaseImpl buscarProjetoPorIdUseCase;
 
     @Mock
-    ProjetoRepositoryService repository;
+    private ProjetoRepositoryService repository;
 
     @BeforeEach
     void setUp() {

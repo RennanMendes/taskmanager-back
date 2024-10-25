@@ -12,9 +12,11 @@ public interface TarefaRepositoryService {
 
     List<Tarefa> buscarPorProjeto(UUID idProjeto);
 
-    Tarefa save(Tarefa tarefa);
+    Tarefa salvar(Tarefa tarefa);
 
     void deletar(Tarefa tarefa);
 
     List<Tarefa> filtarPorIdEStatus(UUID id, Status status);
+
+    Boolean existeTarefaPorProjetoId(UUID idProjeto);
 }
