@@ -17,7 +17,6 @@ input Projeto {
     dataFim: String
     status: Status
     prioridade: Prioridade
-    responsavel: String
 }
 
 type ProjetoOut {
@@ -28,7 +27,6 @@ type ProjetoOut {
     dataFim: String
     status: Status
     prioridade: Prioridade
-    responsavel: String
 }
 
 enum Status {
