@@ -63,4 +63,10 @@ public class TarefaController {
         return atualizarTarefaUseCase.atualizar(id, converter.dtoToEntity(tarefa));
     }
 
+    @MutationMapping
+    public Boolean excluirTarefa(@Argument UUID id){
+        excluirTarefaUseCase.excluir(id);
+        return true;
+    }
+
 }
