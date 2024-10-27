@@ -27,12 +27,14 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
 
     @Override
     public Optional<Tarefa> buscarPorId(UUID id) {
+        simulateLatency();
         Optional<TarefaEntity> entity = repository.findById(id);
         return entity.map(converter::mapToEntity);
     }
 
     @Override
     public List<Tarefa> buscarPorProjeto(UUID idProjeto) {
+        simulateLatency();
         List<TarefaEntity> entity = repository.findByProjetoId(idProjeto);
         return entity.stream().map(converter::mapToEntity).toList();
     }
@@ -50,6 +52,7 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
 
     @Override
     public List<Tarefa> filtarPorIdEStatus(UUID id, Status status) {
+        simulateLatency();
         List<TarefaEntity> entity = repository.findByProjetoIdAndStatus(id, status);
         return entity.stream().map(converter::mapToEntity).toList();
     }
