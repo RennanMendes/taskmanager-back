@@ -16,7 +16,7 @@ public class BuscarProjetoPorNomeUseCaseImpl implements BuscarProjetoPorNomeUseC
     }
 
     @Override
-    @Cacheable("projetos")
+    @Cacheable(value = "projetos", key = "#nome")
     public List<Projeto> buscar(String nome) {
         return repository.buscarPorNome(nome);
     }

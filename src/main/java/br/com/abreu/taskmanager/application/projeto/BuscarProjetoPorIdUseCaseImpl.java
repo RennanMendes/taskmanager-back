@@ -18,7 +18,7 @@ public class BuscarProjetoPorIdUseCaseImpl implements BuscarProjetoPorIdUseCase 
     }
 
     @Override
-    @Cacheable("projetoId")
+    @Cacheable(value = "projetosId", key = "#id")
     public Projeto buscar(UUID id) {
         return repository.buscarPorId(id).orElseThrow(ProjetoNaoEncontradoException::new);
     }
