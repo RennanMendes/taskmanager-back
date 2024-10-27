@@ -58,4 +58,14 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
     public Boolean existeTarefaPorProjetoId(UUID idProjeto){
         return repository.existsByProjetoId(idProjeto);
     }
+
+    private void simulateLatency() {
+        System.out.println("Buscando projetos...");
+        try {
+            Long time = 1000L;
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 }

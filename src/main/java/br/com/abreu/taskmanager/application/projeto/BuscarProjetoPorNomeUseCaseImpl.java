@@ -3,6 +3,7 @@ package br.com.abreu.taskmanager.application.projeto;
 import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
 import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorNomeUseCase;
 import br.com.abreu.taskmanager.core.entities.Projeto;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class BuscarProjetoPorNomeUseCaseImpl implements BuscarProjetoPorNomeUseC
     }
 
     @Override
+    @Cacheable("projetos")
     public List<Projeto> buscar(String nome) {
         return repository.buscarPorNome(nome);
     }

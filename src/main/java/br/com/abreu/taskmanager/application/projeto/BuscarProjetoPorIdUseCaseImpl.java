@@ -4,6 +4,7 @@ import br.com.abreu.taskmanager.adapters.ProjetoRepositoryService;
 import br.com.abreu.taskmanager.application.exception.ProjetoNaoEncontradoException;
 import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorIdUseCase;
 import br.com.abreu.taskmanager.core.entities.Projeto;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ public class BuscarProjetoPorIdUseCaseImpl implements BuscarProjetoPorIdUseCase 
     }
 
     @Override
+    @Cacheable("projetoId")
     public Projeto buscar(UUID id) {
         return repository.buscarPorId(id).orElseThrow(ProjetoNaoEncontradoException::new);
     }
