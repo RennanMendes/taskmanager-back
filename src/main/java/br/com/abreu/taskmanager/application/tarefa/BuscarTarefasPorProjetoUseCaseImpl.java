@@ -1,7 +1,7 @@
 package br.com.abreu.taskmanager.application.tarefa;
 
 import br.com.abreu.taskmanager.adapters.TarefaRepositoryService;
-import br.com.abreu.taskmanager.application.exception.TarefaNaoEncontradaException;
+import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorIdUseCase;
 import br.com.abreu.taskmanager.core.cases.tarefa.BuscarTarefasPorProjetoUseCase;
 import br.com.abreu.taskmanager.core.entities.Tarefa;
 
@@ -11,17 +11,16 @@ import java.util.UUID;
 public class BuscarTarefasPorProjetoUseCaseImpl implements BuscarTarefasPorProjetoUseCase {
 
     private final TarefaRepositoryService repository;
+    private final BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
 
-    public BuscarTarefasPorProjetoUseCaseImpl(TarefaRepositoryService repository) {
+    public BuscarTarefasPorProjetoUseCaseImpl(TarefaRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase) {
         this.repository = repository;
+        this.buscarProjetoPorIdUseCase = buscarProjetoPorIdUseCase;
     }
 
     @Override
     public List<Tarefa> buscarPorProjeto(UUID idProjeto) {
-        if (!repository.existeTarefaPorProjetoId(idProjeto)) {
-            throw new TarefaNaoEncontradaException();
-        }
-
+        buscarProjetoPorIdUseCase.buscar(idProjeto);
         return repository.buscarPorProjeto(idProjeto);
     }
 }

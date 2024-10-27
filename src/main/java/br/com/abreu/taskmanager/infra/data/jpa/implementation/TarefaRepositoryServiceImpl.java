@@ -54,11 +54,6 @@ public class TarefaRepositoryServiceImpl implements TarefaRepositoryService {
         return entity.stream().map(converter::mapToEntity).toList();
     }
 
-    @Override
-    public Boolean existeTarefaPorProjetoId(UUID idProjeto){
-        return repository.existsByProjetoId(idProjeto);
-    }
-
     private void simulateLatency() {
         System.out.println("Buscando projetos...");
         try {

@@ -25,8 +25,8 @@ public class TarefaConfig {
     }
 
     @Bean
-    public BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase(TarefaRepositoryService repository) {
-        return new BuscarTarefasPorProjetoUseCaseImpl(repository);
+    public BuscarTarefasPorProjetoUseCase buscarTarefasPorProjetoUseCase(TarefaRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase) {
+        return new BuscarTarefasPorProjetoUseCaseImpl(repository, buscarProjetoPorIdUseCase);
     }
 
     @Bean

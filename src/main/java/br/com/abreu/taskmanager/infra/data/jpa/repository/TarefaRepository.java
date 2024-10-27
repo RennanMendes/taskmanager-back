@@ -10,5 +10,4 @@ import java.util.UUID;
 public interface TarefaRepository extends JpaRepository<TarefaEntity, UUID> {
     List<TarefaEntity> findByProjetoId(UUID idProjeto);
     List<TarefaEntity> findByProjetoIdAndStatus(UUID idProjeto, Status status);
-    Boolean existsByProjetoId(UUID idProjeto);
 }
