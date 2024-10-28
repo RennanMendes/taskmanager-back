@@ -1,6 +1,5 @@
 package br.com.abreu.taskmanager.api.handler;
 
-import br.com.abreu.taskmanager.application.exception.ProjetoNaoEncontradoException;
 import br.com.abreu.taskmanager.application.exception.TarefaNaoEncontradaException;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;

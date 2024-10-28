@@ -1,7 +1,9 @@
 package br.com.abreu.taskmanager.application.tarefa;
 
 import br.com.abreu.taskmanager.adapters.TarefaRepositoryService;
+import br.com.abreu.taskmanager.application.exception.ProjetoNaoEncontradoException;
 import br.com.abreu.taskmanager.application.exception.TarefaNaoEncontradaException;
+import br.com.abreu.taskmanager.core.cases.projeto.BuscarProjetoPorIdUseCase;
 import br.com.abreu.taskmanager.core.entities.Prioridade;
 import br.com.abreu.taskmanager.core.entities.Projeto;
 import br.com.abreu.taskmanager.core.entities.Status;
@@ -28,6 +30,9 @@ class BuscarTarefasPorProjetoUseCaseImplTest {
     @Mock
     private TarefaRepositoryService repository;
 
+    @Mock
+    private BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -36,14 +41,15 @@ class BuscarTarefasPorProjetoUseCaseImplTest {
     @Test
     public void deveRetornar_ListaDeTarefas_quandoBuscarTarefaPorProjetoIdValido() {
         UUID idProjeto = UUID.randomUUID();
+        Projeto projeto = criarProjetoModelo();
         List<Tarefa> tarefas = List.of(criarTarefaModelo());
 
-        when(repository.existeTarefaPorProjetoId(idProjeto)).thenReturn(true);
+        when(buscarProjetoPorIdUseCase.buscar(idProjeto)).thenReturn(projeto);
         when(repository.buscarPorProjeto(idProjeto)).thenReturn(tarefas);
 
         List<Tarefa> resposta = buscarTarefasPorProjetoUseCase.buscarPorProjeto(idProjeto);
 
-        verify(repository).existeTarefaPorProjetoId(idProjeto);
+        verify(buscarProjetoPorIdUseCase).buscar(idProjeto);
         verify(repository).buscarPorProjeto(idProjeto);
 
         verifyNoMoreInteractions(repository);
@@ -55,15 +61,15 @@ class BuscarTarefasPorProjetoUseCaseImplTest {
     public void deveRetornar_TarefaNaoEncontradaException_quandoBuscarTarefaPorProjetoIdInvalido() {
         UUID idProjeto = UUID.randomUUID();
 
-        when(repository.existeTarefaPorProjetoId(idProjeto)).thenReturn(false);
+        when(buscarProjetoPorIdUseCase.buscar(idProjeto)).thenThrow(new ProjetoNaoEncontradoException());
 
-        Exception exception = assertThrows(TarefaNaoEncontradaException.class,
+        Exception exception = assertThrows(ProjetoNaoEncontradoException.class,
                 () -> buscarTarefasPorProjetoUseCase.buscarPorProjeto(idProjeto));
 
-        verify(repository).existeTarefaPorProjetoId(idProjeto);
+        verify(buscarProjetoPorIdUseCase).buscar(idProjeto);
         verifyNoMoreInteractions(repository);
 
-        assertEquals("Tarefa não encontrada!", exception.getMessage());
+        assertEquals("Projeto não encontrado!", exception.getMessage());
     }
 
     private Tarefa criarTarefaModelo() {
