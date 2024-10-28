@@ -15,8 +15,8 @@ public class TarefaConfig {
     TarefaRepositoryService repository;
 
     @Bean
-    public AtualizarTarefaUseCase atualizarTarefaUseCase(TarefaRepositoryService repository, BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase){
-        return new AtualizarTarefaUseCaseImpl(repository,buscarTarefaPorIdUseCase);
+    public AtualizarTarefaUseCase atualizarTarefaUseCase(TarefaRepositoryService repository, BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase) {
+        return new AtualizarTarefaUseCaseImpl(repository, buscarTarefaPorIdUseCase);
     }
 
     @Bean

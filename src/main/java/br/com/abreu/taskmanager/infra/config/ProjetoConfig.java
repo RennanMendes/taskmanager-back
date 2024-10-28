@@ -14,7 +14,7 @@ public class ProjetoConfig {
     ProjetoRepositoryService repository;
 
     @Bean
-    public AtualizarProjetoUseCase atualizarProjetoUseCase(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorId){
+    public AtualizarProjetoUseCase atualizarProjetoUseCase(ProjetoRepositoryService repository, BuscarProjetoPorIdUseCase buscarProjetoPorId) {
         return new AtualizarProjetoUseCaseImpl(repository, buscarProjetoPorId);
     }
 

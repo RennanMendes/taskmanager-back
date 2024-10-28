@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import br.com.abreu.taskmanager.api.converter.TarefaConverter;
 import br.com.abreu.taskmanager.api.dto.TarefaRequestDto;
+import br.com.abreu.taskmanager.api.handler.GraphQLExceptionMapperRegistry;
 import br.com.abreu.taskmanager.core.cases.tarefa.*;
 import br.com.abreu.taskmanager.core.entities.Prioridade;
 import br.com.abreu.taskmanager.core.entities.Status;
@@ -26,6 +27,9 @@ class TarefaControllerTest {
 
     @Autowired
     private GraphQlTester graphQlTester;
+
+    @MockBean
+    private GraphQLExceptionMapperRegistry mapperRegistry;
 
     @MockBean
     private BuscarTarefaPorIdUseCase buscarTarefaPorIdUseCase;

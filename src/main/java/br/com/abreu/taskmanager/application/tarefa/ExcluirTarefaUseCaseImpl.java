@@ -20,6 +20,6 @@ public class ExcluirTarefaUseCaseImpl implements ExcluirTarefaUseCase {
     @Override
     public void excluir(UUID id) {
         Tarefa tarefa = buscarTarefaPorIdUseCase.buscarPorId(id);
-         repository.deletar(tarefa);
+        repository.deletar(tarefa);
     }
 }

@@ -13,7 +13,7 @@ public interface ProjetoRepositoryService {
     List<Projeto> buscarPorNome(String nome);
 
     List<Projeto> buscarTodos();
-    
+
     Projeto salvar(Projeto projeto);
 
     void deletar(Projeto projeto);

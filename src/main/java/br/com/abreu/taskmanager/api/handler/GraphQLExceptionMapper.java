@@ -5,5 +5,6 @@ import graphql.schema.DataFetchingEnvironment;
 
 public interface GraphQLExceptionMapper<T extends Throwable> {
     GraphQLError toGraphQLError(Throwable exception, DataFetchingEnvironment env);
+
     Class<T> getExceptionType();
 }

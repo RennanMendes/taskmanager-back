@@ -64,7 +64,7 @@ public class TarefaController {
     }
 
     @MutationMapping
-    public Boolean excluirTarefa(@Argument UUID id){
+    public Boolean excluirTarefa(@Argument UUID id) {
         excluirTarefaUseCase.excluir(id);
         return true;
     }

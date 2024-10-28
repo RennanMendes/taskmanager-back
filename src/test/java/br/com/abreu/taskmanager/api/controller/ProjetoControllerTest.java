@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import br.com.abreu.taskmanager.api.converter.ProjetoConverter;
 import br.com.abreu.taskmanager.api.dto.ProjetoRequestDto;
+import br.com.abreu.taskmanager.api.handler.GraphQLExceptionMapperRegistry;
 import br.com.abreu.taskmanager.core.cases.projeto.*;
 import br.com.abreu.taskmanager.core.entities.Prioridade;
 import br.com.abreu.taskmanager.core.entities.Projeto;
@@ -32,6 +33,9 @@ public class ProjetoControllerTest {
 
     @Autowired
     private GraphQlTester graphQlTester;
+
+    @MockBean
+    private GraphQLExceptionMapperRegistry mapperRegistry;
 
     @MockBean
     private BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase;

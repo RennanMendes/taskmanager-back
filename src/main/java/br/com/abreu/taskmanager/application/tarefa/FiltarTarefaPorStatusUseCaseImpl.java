@@ -18,7 +18,7 @@ public class FiltarTarefaPorStatusUseCaseImpl implements FiltarTarefaPorStatusUs
     }
 
     @Override
-    @Cacheable(value = "tarefas",  key = "#idProjeto + '_' + #status")
+    @Cacheable(value = "tarefas", key = "#idProjeto + '_' + #status")
     public List<Tarefa> filtrarPorIdEStatus(UUID idProjeto, Status status) {
         return repository.filtarPorIdEStatus(idProjeto, status);
     }

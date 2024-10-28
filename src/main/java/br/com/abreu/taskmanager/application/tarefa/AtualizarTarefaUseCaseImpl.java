@@ -20,6 +20,6 @@ public class AtualizarTarefaUseCaseImpl implements AtualizarTarefaUseCase {
     @Override
     public Tarefa atualizar(UUID id, Tarefa dto) {
         Tarefa tarefa = buscarTarefaPorIdUseCase.buscarPorId(id);
-        return  repositoryService.salvar(tarefa.atualizar(dto));
+        return repositoryService.salvar(tarefa.atualizar(dto));
     }
 }
