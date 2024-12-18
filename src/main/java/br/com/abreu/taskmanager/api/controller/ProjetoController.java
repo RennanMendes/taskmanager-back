@@ -1,7 +1,9 @@
 package br.com.abreu.taskmanager.api.controller;
 
 import br.com.abreu.taskmanager.api.converter.ProjetoConverter;
+import br.com.abreu.taskmanager.api.dto.HeaderInfo;
 import br.com.abreu.taskmanager.api.dto.ProjetoRequestDto;
+import br.com.abreu.taskmanager.application.projeto.TestarCache;
 import br.com.abreu.taskmanager.core.cases.projeto.*;
 import br.com.abreu.taskmanager.core.entities.Projeto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,13 @@ public class ProjetoController {
     private final ExcluirProjetoUseCase excluirProjetoUseCase;
     private final AtualizarProjetoUseCase atualizarProjetoUseCase;
     private final ProjetoConverter converter;
+    private final TestarCache testarCache;
 
     @Autowired
     public ProjetoController(BuscarProjetoPorIdUseCase buscarProjetoPorIdUseCase, BuscarProjetoPorNomeUseCase
             buscarProjetoPorNomeUseCase, BuscarTodosProjetosUseCase buscarTodosProjetosUseCase,
                              CriarProjetoUseCase criarProjetoUseCase, ExcluirProjetoUseCase excluirProjetoUseCase,
-                             AtualizarProjetoUseCase atualizarProjetoUseCase, ProjetoConverter converter) {
+                             AtualizarProjetoUseCase atualizarProjetoUseCase, ProjetoConverter converter, TestarCache testarCache) {
 
         this.buscarProjetoPorIdUseCase = buscarProjetoPorIdUseCase;
         this.buscarProjetoPorNomeUseCase = buscarProjetoPorNomeUseCase;
@@ -37,6 +40,12 @@ public class ProjetoController {
         this.excluirProjetoUseCase = excluirProjetoUseCase;
         this.atualizarProjetoUseCase = atualizarProjetoUseCase;
         this.converter = converter;
+        this.testarCache = testarCache;
+    }
+
+    @QueryMapping
+    public Projeto testarCache(@Argument UUID id, @Argument HeaderInfo headerInfo) {
+        return testarCache.buscar(id, headerInfo);
     }
 
     @QueryMapping

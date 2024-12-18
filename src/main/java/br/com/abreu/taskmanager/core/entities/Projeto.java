@@ -3,6 +3,7 @@ package br.com.abreu.taskmanager.core.entities;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ToString
 public class Projeto implements Serializable {
     private UUID id;
     private String nome;

@@ -26,14 +26,14 @@ public class ProjetoRepositoryServiceImpl implements ProjetoRepositoryService {
 
     @Override
     public Optional<Projeto> buscarPorId(UUID id) {
-        simulateLatency();
+//        simulateLatency();
         Optional<ProjetoEntity> entity = repository.findById(id);
         return entity.map(converter::mapToEntity);
     }
 
     @Override
     public List<Projeto> buscarPorNome(String nome) {
-        simulateLatency();
+//        simulateLatency();
         List<ProjetoEntity> entity = repository.findByNomeContainingIgnoreCase(nome);
         return entity.stream().map(converter::mapToEntity).toList();
     }
@@ -55,13 +55,13 @@ public class ProjetoRepositoryServiceImpl implements ProjetoRepositoryService {
         repository.delete(converter.mapToTable(projeto));
     }
 
-    private void simulateLatency() {
-        System.out.println("Buscando projetos...");
-        try {
-            Long time = 1000L;
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
+//    private void simulateLatency() {
+//        System.out.println("Buscando projetos...");
+//        try {
+//            Long time = 1000L;
+//            Thread.sleep(time);
+//        } catch (InterruptedException e) {
+//            throw new IllegalArgumentException(e);
+//        }
+//    }
 }
