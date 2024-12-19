@@ -21,7 +21,7 @@ import java.util.UUID;
 public class cacheAspect {
 
     @Around("@annotation(br.com.abreu.taskmanager.common.aop.CacheAnnotation)")
-    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    public <T> T  logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args1 = {"param1", 42, new int[]{1, 2, 3}, new HeaderInfo("123456", UUID.randomUUID(), 987654321L), new IdObjeto("123456", UUID.fromString("550e8400-e29b-41d4-a716-446655440000"), 987654321L)};
         Object[] args2 = {"param1", 42, new int[]{1, 2, 3}, new HeaderInfo("1", UUID.randomUUID(), 98721L), new IdObjeto("123456", UUID.fromString("550e8400-e29b-41d4-a716-446655440000"), 987654321L)};
 
@@ -31,9 +31,7 @@ public class cacheAspect {
         System.out.println("Hash gerado: " + hash1);
         System.out.println(hash1.equals(hash2));
 
-        Object object = joinPoint.proceed();
-
-        return object;
+        return (T) joinPoint.proceed();
     }
 
     private String gerarKey(Object[] args) throws JsonProcessingException, NoSuchAlgorithmException {
