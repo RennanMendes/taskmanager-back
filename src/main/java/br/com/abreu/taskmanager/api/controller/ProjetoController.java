@@ -2,6 +2,7 @@ package br.com.abreu.taskmanager.api.controller;
 
 import br.com.abreu.taskmanager.api.converter.ProjetoConverter;
 import br.com.abreu.taskmanager.api.dto.HeaderInfo;
+import br.com.abreu.taskmanager.api.dto.IdObjeto;
 import br.com.abreu.taskmanager.api.dto.ProjetoRequestDto;
 import br.com.abreu.taskmanager.application.projeto.TestarCache;
 import br.com.abreu.taskmanager.core.cases.projeto.*;
@@ -44,8 +45,8 @@ public class ProjetoController {
     }
 
     @QueryMapping
-    public Projeto testarCache(@Argument UUID id, @Argument HeaderInfo headerInfo) {
-        return testarCache.buscar(id, headerInfo);
+    public Projeto testarCache(@Argument UUID id, @Argument HeaderInfo headerInfo, @Argument IdObjeto idObjeto) {
+        return testarCache.buscar(id, headerInfo, idObjeto);
     }
 
     @QueryMapping

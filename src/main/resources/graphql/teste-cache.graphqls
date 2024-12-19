@@ -1,8 +1,14 @@
 extend type Query {
-    testarCache(id: ID!, headerInfo: HeaderInfo) : ProjetoOut
+    testarCache(id: ID!, headerInfo: HeaderInfo, idObjeto: IdObjeto) : ProjetoOut
 }
 
 input HeaderInfo {
+    idPessoa: String
+    idVenda: ID
+    idQualquer: Int
+}
+
+input IdObjeto {
     idPessoa: String
     idVenda: ID
     idQualquer: Int
